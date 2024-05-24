@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <!-- <link rel="stylesheet" href="calculator.css"> -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(to right, #2c3e50, #bdc3c7);
+
+      }
+      /* hr{
+        height: .2vh;
+        border: 2px solid green;
+      } */
+
+      .calculator {
+        background-color: rgba(1, 0, 0, 0.412);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 1px 2px 3px black;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: rgb(255, 255, 255);
+        font-style: italic;
+        text-shadow: 1px 2px 3px rgb(0, 0, 0);
+        text-transform: uppercase;
+      }
+
+      input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: right;
+        font-size: 1.2em;
+        box-shadow: 1px 2px 3px black;
+        color: #000;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      button {
+        padding: 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 1px 2px 3px black;
+      }
+
+      .button-number {
+        background-color: #c8b4b4;
+        color: #333;
+      }
+
+      .button-number:hover {
+        background-color: #e0e0e0;
+      }
+
+      .button-operator {
+        background-color: #18181afe;
+        color: white;
+      }
+
+      .button-operator:hover {
+        background-color: #0056b3;
+      }
+
+      .button-clear {
+        background-color: #ff4d4d;
+        color: white;
+      }
+
+      .button-clear:hover {
+        background-color: #cc0000;
+      }
+
+      .button-equal {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .button-equal:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <hr>
+      <h1>FusionCalc
+      </h1>
+      <hr>
+      <input type="text" id="result" disabled />
+      <!-- <hr> -->
+      <div class="buttons">
+        <button class="button-clear" onclick="clearResult()">C</button>
+        <button class="button-number" onclick="appendToResult('1')">1</button>
+        <button class="button-number" onclick="appendToResult('2')">2</button>
+        <button class="button-number" onclick="appendToResult('3')">3</button>
+        <button class="button-operator" onclick="appendToResult('+')">+</button>
+        <button class="button-number" onclick="appendToResult('4')">4</button>
+        <button class="button-number" onclick="appendToResult('5')">5</button>
+        <button class="button-number" onclick="appendToResult('6')">6</button>
+        <button class="button-operator" onclick="appendToResult('-')">-</button>
+        <button class="button-number" onclick="appendToResult('7')">7</button>
+        <button class="button-number" onclick="appendToResult('8')">8</button>
+        <button class="button-number" onclick="appendToResult('9')">9</button>
+        <button class="button-operator" onclick="appendToResult('*')">X</button>
+        <button class="button-number" onclick="appendToResult('0')">0</button>
+        <button class="button-number" onclick="appendToResult('.')">.</button>
+        <button class="button-equal" onclick="calculateResult()">=</button>
+        <button class="button-operator" onclick="appendToResult('/')">/</button>
+        <button class="button-operator" onclick="appendToResult('**')">**</button>
+        <button class="button-operator" onclick="appendToResult('%')">%</button>
+        <button class="button-operator" onclick="appendToResult('~')">~</button>
+      </div>
+    </div>
+    <!-- <script src="calculator.js"></script> -->
+    <script>
+      function clearResult() {
+        document.getElementById("result").value = "";
+      }
+
+      function appendToResult(value) {
+        document.getElementById("result").value += value;
+        
+      }
+
+      function calculateResult() {
+        const result = document.getElementById("result").value;
+        try {
+          document.getElementById("result").value = eval(result);
+
+          
+        } catch (e) {
+          alert("Invalid input");
+        }
+      }
+    </script>
+  </body>
+</html>
